@@ -2,9 +2,17 @@ version: '3'
 
 services:
   nginx:
-    image: nginx:latest
-    ports:
-      - "9999:80"
+    container_name: nginx
     volumes:
-      - ./requirements/index.html:/usr/share/nginx/html
-    restart: alway
+    - wordpress:/var/www/wordpress
+    networks:
+    - inception
+      #    depends_on:
+      #    -wordpress
+  build:
+  context: requirements/nginx
+  dockerfile: Dockerfile
+    #  env_file: .env
+  ports:
+  - "443:443"
+  restart: on-failure
