@@ -1,17 +1,17 @@
-DOCKER_COMPOSE = docker-compose
-DOCKER_COMPOSE_FILE = srcs/docker-compose.yml
+COMPOSE_CMD = docker-compose
+COMPOSE_FILE = srcs/docker-compose.yml
 
 build:
-	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) build
+	$(COMPOSE_CMD) -f $(COMPOSE_FILE) build
 
 up:
-	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) up -d
+	$(COMPOSE_CMD) -f $(COMPOSE_FILE) up -d
 
 down:
-	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) down
+	$(COMPOSE_CMD) -f $(COMPOSE_FILE) down
 
 restart:
-	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) restart
+	$(COMPOSE_CMD) -f $(COMPOSE_FILE) restart
 
 # build      Build images
 # up         Start containers

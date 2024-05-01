@@ -5,14 +5,11 @@ RUN apt-get -y update && apt-get -y upgrade
 RUN apt-get -y install mariadb-server
 
 COPY conf/50-server.cnf	/etc/mysql/mariadb.conf.d/50-server.cnf
+COPY ./script.sh /script.sh
+RUN chmod 755 /script.sh
 
-entrypoint []
-// script .sh
-RUN service mysql start;
-RUN mysql -e "CREATE DATABASE IF NOT EXISTS \`${SQL_DATABASE}\`;"
-RUN mysql -e "CREATE USER IF NOT EXISTS \`${SQL_USER}\`@'localhost' IDENTIFIED BY '${SQL_PASSWORD}';"
-RUN mysql -e "GRANT ALL PRIVILEGES ON \`${SQL_DATABASE}\`.* TO \`${SQL_USER}\`@'%' IDENTIFIED BY '${SQL_PASSWORD}';"
-RUN mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${SQL_ROOT_PASSWORD}';"
-RUN mysql -e "FLUSH PRIVILEGES;"
-RUN mysqladmin -u root -p$SQL_ROOT_PASSWORD shutdown
-RUN exec mysqld_safe
+EXPOSE 3306
+
+ENTRYPOINT [ "bash", "/script.sh" ]
+
+CMD [ "mysqld_safe" ]
