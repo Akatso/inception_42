@@ -22,3 +22,6 @@ restart:
 # FOR DOCKER
 # remove all containers/volumes				=> docker rm -vf $(docker ps -a)
 # remove all images (after rm containers)	=> docker rmi -f $(docker images -a)
+
+# EXEC WITH BASH
+# docker exec -it <container_name> bash
