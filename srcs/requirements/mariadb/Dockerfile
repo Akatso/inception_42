@@ -2,7 +2,7 @@ FROM debian:bullseye
 
 RUN apt update -y && apt upgrade -y
 RUN apt-get -y update && apt-get -y upgrade
-RUN apt -y install mariadb-server
+RUN apt-get -y install mariadb-server mariadb-client
 
 COPY conf/50-server.cnf	/etc/mysql/mariadb.conf.d/50-server.cnf
 COPY conf/script.sh /etc/mysql/mariadb.conf.d/script.sh
