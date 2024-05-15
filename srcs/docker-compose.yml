@@ -9,26 +9,17 @@ services:
     ports:
       - "443:443"
     volumes:
-      - requirements/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
-    restart: always
+      - ./requirements/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+    restart: on-failure
   mariadb:
     container_name: mariadb
     build:
-      context: requirements/mariadb
+      context: ./requirements/mariadb
       dockerfile: Dockerfile
     ports:
       - "3306:3306"
     volumes:
       - ./data:/var/lib/mysql
-    restart: always
+    restart: on-failure
     env_file:
       - .env
-
-#name image for each containers
-# volumes:
-#   mariadb:
-#     driver: local
-#     driver_opts:
-#       type: 'none'
-#       o: 'bind'
-#       device: /home/slepetit/data/mariadb
