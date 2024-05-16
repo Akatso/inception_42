@@ -1,3 +1,4 @@
+DOCKER_CMD = docker
 COMPOSE_CMD = docker-compose
 COMPOSE_FILE = srcs/docker-compose.yml
 
@@ -8,20 +9,22 @@ up:
 	$(COMPOSE_CMD) -f $(COMPOSE_FILE) up -d
 
 down:
-	$(COMPOSE_CMD) -f $(COMPOSE_FILE) down
+	$(COMPOSE_CMD) -f $(COMPOSE_FILE) down --rmi all
 
 restart:
 	$(COMPOSE_CMD) -f $(COMPOSE_FILE) restart
+
+list:
+	$(DOCKER_CMD) ps -a
+	$(DOCKER_CMD) volume ls
+	$(DOCKER_CMD) image ls
+	$(DOCKER_CMD) network ls
 
 # FOR DOCKER-COMPOSE
 # build      Build images
 # up         Start containers
 # down       Stop/remove containers/networks/images/volumes
 # restart    Restart containers
-
-# FOR DOCKER
-# remove all containers/volumes				=> docker rm -vf $(docker ps -a)
-# remove all images (after rm containers)	=> docker rmi -f $(docker images -a)
 
 # EXEC WITH BASH
 # docker exec -it <container_name> bash
