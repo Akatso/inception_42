@@ -23,10 +23,18 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./data:/var/lib/mysql
+      - mariadb
     restart: always
     env_file:
       - .env
+
+volumes:
+  mariadb:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: /home/kali/data/mariadb
 
 networks:
   inception:
