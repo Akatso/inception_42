@@ -11,5 +11,7 @@ RUN apt-get install -y mariadb-client
 
 RUN wget https://fr.wordpress.org/wordpress-6.5.2-fr_FR.tar.gz -P /var/www
 RUN cd /var/www && tar -xzf wordpress-6.5.2-fr_FR.tar.gz
-RUN rm wordpress-6.5.2-fr_FR.tar.gz
+RUN rm -rf wordpress-6.5.2-fr_FR.tar.gz
 RUN	chown -R root:root /var/www/wordpress
+
+CMD [ "/usr/sbin/php-fpm7.3 -F" ]
