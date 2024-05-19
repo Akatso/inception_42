@@ -1,8 +1,6 @@
-!bin/bash
+#!/bin/bash
 
-sleep 10
+wp config create --allow-root --dbname=$SQL_DATABASE --dbuser=$SQL_USER --dbpass=$SQL_PASS --dbhost=mariadb:3306 --path='/var/www/wordpress'
+wp core install --url=slepetit.42.fr --title=test --admin_user=superslep --admin_password=supergateau --admin_email=superslep@test.fr
 
-wp config create --allow-root --dbname=$SQL_DATABASE
-wp config create --allow-root --dbuser=$SQL_USER
-wp config create --allow-root --dbpass=$SQL_PASSWORD 
-wp config create --allow-root --dbhost=mariadb:3306 --path='/var/www/wordpress'
+exec /usr/sbin/php-fpm7.3 -F

@@ -10,6 +10,8 @@ up:
 
 down:
 	$(COMPOSE_CMD) -f $(COMPOSE_FILE) down --rmi all
+	docker volume prune
+	docker volume rm srcs_mariadb srcs_wordpress
 
 restart:
 	$(COMPOSE_CMD) -f $(COMPOSE_FILE) restart

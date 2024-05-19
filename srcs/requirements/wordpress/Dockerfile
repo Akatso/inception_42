@@ -26,5 +26,3 @@ RUN chmod 755 /script.sh
 EXPOSE 9000
 
 ENTRYPOINT [ "bash", "/script.sh" ]
-
-CMD [ "/usr/sbin/php-fpm7.3 -F" ]
