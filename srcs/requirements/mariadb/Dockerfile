@@ -11,4 +11,4 @@ RUN chmod 755 /usr/local/bin/script.sh
 
 EXPOSE 3306
 
-ENTRYPOINT [ "bash", "/usr/local/bin/script.sh" ]
+ENTRYPOINT ["bash", "/usr/local/bin/script.sh"]

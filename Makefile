@@ -10,6 +10,9 @@ up:
 
 down:
 	$(COMPOSE_CMD) -f $(COMPOSE_FILE) down --rmi all
+	cd /home/kali/data/mariadb && sudo rm -rf *
+	cd /home/kali/data/wordpress && sudo rm -rf *
+	docker volume rm srcs_mariadb srcs_wordpress
 
 restart:
 	$(COMPOSE_CMD) -f $(COMPOSE_FILE) restart
