@@ -11,7 +11,7 @@ if [ ! -d /var/lib/mysql/mysql ]; then
     mysql=( mysql --protocol=socket -uroot )
 
     for i in {30..0}; do
-        if echo 'SELECT 1' | "${mysql[]}" &> /dev/null; then
+        if echo 'SELECT 1' | "${mysql[@]}" &> /dev/null; then
             break
         fi
         echo 'MariaDB init process in progress...'
@@ -24,7 +24,7 @@ if [ ! -d /var/lib/mysql/mysql ]; then
     fi
 
     echo "Setting up MariaDB users and database..."
-    "${mysql[]}" <<-EOSQL
+    "${mysql[@]}" <<-EOSQL
         FLUSH PRIVILEGES;
         CREATE DATABASE IF NOT EXISTS \`${SQL_DATABASE}\`;
         CREATE USER IF NOT EXISTS \`${SQL_USER}\`@'%' IDENTIFIED BY '${SQL_PASS}';

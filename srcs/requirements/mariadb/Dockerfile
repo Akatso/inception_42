@@ -2,13 +2,13 @@ FROM debian:bullseye
 
 RUN apt update -y && apt upgrade -y
 RUN apt-get -y update && apt-get -y upgrade
-RUN apt -y install mariadb-server
+RUN apt-get -y install mariadb-server
 
-COPY conf/mariadb.conf	/etc/mysql/mariadb.conf.d/mariadb.conf
+COPY conf/mariadb.conf /etc/mysql/mariadb.conf.d/mariadb.conf
 
-COPY conf/script.sh /etc/mysql/mariadb.conf.d/script.sh
-RUN  chmod 755 /etc/mysql/mariadb.conf.d/script.sh
+COPY conf/script.sh /usr/local/bin/script.sh
+RUN chmod 755 /usr/local/bin/script.sh
 
 EXPOSE 3306
 
-ENTRYPOINT [ "bash", "/etc/mysql/mariadb.conf.d/script.sh" ]
+ENTRYPOINT [ "bash", "/usr/local/bin/script.sh" ]
