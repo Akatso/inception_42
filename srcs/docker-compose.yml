@@ -22,8 +22,8 @@ services:
       dockerfile: Dockerfile
     networks:
       - inception
-    ports:
-      - "3306:3306"
+    expose:
+      - "3306"
     volumes:
       - mariadb
     restart: always
@@ -36,8 +36,8 @@ services:
       dockerfile: Dockerfile
     networks:
       - inception
-    ports: 
-      - "9000:9000"
+    expose: 
+      - "9000"
     volumes:
       - wordpress
     restart: always
