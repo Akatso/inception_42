@@ -4,15 +4,15 @@ COMPOSE_FILE = srcs/docker-compose.yml
 
 build:
 	$(COMPOSE_CMD) -f $(COMPOSE_FILE) build
+	sudo mkdir -p /home/kali/data/wordpress
+	sudo mkdir -p /home/kali/data/mariadb
 
 up:
 	$(COMPOSE_CMD) -f $(COMPOSE_FILE) up -d
 
 down:
-	$(COMPOSE_CMD) -f $(COMPOSE_FILE) down --rmi all
-	cd /home/kali/data/mariadb && sudo rm -rf *
-	cd /home/kali/data/wordpress && sudo rm -rf *
-	docker volume rm srcs_mariadb srcs_wordpress
+	$(COMPOSE_CMD) -f $(COMPOSE_FILE) down -v --rmi all
+	cd /home/kali && sudo rm -rf data
 
 restart:
 	$(COMPOSE_CMD) -f $(COMPOSE_FILE) restart
