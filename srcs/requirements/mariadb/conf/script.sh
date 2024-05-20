@@ -12,3 +12,4 @@ if [ ! -d /var/lib/mysql/dbception ]; then
 
     mysqld_safe --bootstrap --skip-networking=0 < /tmp/grant.sql
 fi
+exec mysqld_safe
