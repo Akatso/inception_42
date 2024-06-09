@@ -10,7 +10,7 @@ if [ ! -d /var/lib/mysql/dbception ]; then
     "${mysql[@]}" <<-EOSQL
         CREATE DATABASE IF NOT EXISTS \`${SQL_DATABASE}\`;
         CREATE USER IF NOT EXISTS \`${SQL_USER}\`@'%' IDENTIFIED BY '${SQL_PASS}';
-        GRANT ALL PRIVILEGES ON \`${SQL_DATABASE}\`.* TO \`${SQL_USER}\`@'%';
+        GRANT ALL PRIVILEGES ON \`${SQL_DATABASE}\`.* TO \`${SQL_USER}\`@'%' IDENTIFIED BY '${SQL_PASS}';
         FLUSH PRIVILEGES;
 EOSQL
 

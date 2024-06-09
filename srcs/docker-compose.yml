@@ -13,8 +13,6 @@ services:
     volumes:
       - wordpress:/var/www/wordpress
     restart: always
-    depends_on:
-      - wordpress
   mariadb:
     container_name: mariadb
     build:
@@ -36,7 +34,7 @@ services:
       dockerfile: Dockerfile
     networks:
       - inception
-    expose: 
+    expose:
       - "9000"
     volumes:
       - wordpress:/var/www/wordpress
