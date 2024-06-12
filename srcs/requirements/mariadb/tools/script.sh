@@ -14,7 +14,6 @@ if [ ! -d /var/lib/mysql/dbception ]; then
         FLUSH PRIVILEGES;
 EOSQL
 
-    sleep 5
     mysqladmin -uroot shutdown
 fi
 

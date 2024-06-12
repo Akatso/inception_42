@@ -11,7 +11,7 @@ RUN chown -R www-data:www-data /var/www/wordpress
 RUN mkdir /run/php
 WORKDIR	/var/www/wordpress/
 
-COPY ./conf/script.sh /usr/local/bin/script.sh
+COPY tools/script.sh /usr/local/bin/script.sh
 RUN chmod 755 /usr/local/bin/script.sh
 
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar

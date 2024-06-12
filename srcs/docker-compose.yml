@@ -13,6 +13,7 @@ services:
     volumes:
       - wordpress:/var/www/wordpress
     restart: always
+    env_file: .env
   mariadb:
     container_name: mariadb
     build:
@@ -53,10 +54,10 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/home/kali/data/mariadb'
+      device: '/home/slepetit/data/mariadb'
   wordpress:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/home/kali/data/wordpress'
+      device: '/home/slepetit/data/wordpress'
