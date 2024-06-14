@@ -6,6 +6,7 @@ services:
     build:
       context: ./requirements/nginx
       dockerfile: Dockerfile
+    image: nginx
     networks:
       - inception
     ports:
@@ -19,6 +20,7 @@ services:
     build:
       context: ./requirements/mariadb
       dockerfile: Dockerfile
+    image: mariadb
     networks:
       - inception
     expose:
@@ -33,6 +35,7 @@ services:
     build:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
+    image: wordpress
     networks:
       - inception
     expose:
